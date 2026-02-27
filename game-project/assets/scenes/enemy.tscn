@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bssv6xclk5u2k"]
 
-[ext_resource type="Script" uid="uid://dtfk5118tmaxd" path="res://assets/scripts/Hitbox.gd" id="1_kvq5h"]
+[ext_resource type="Script" uid="uid://dtfk5118tmaxd" path="res://assets/scripts/states/Hitbox.gd" id="1_kvq5h"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_55kjn"]
 
@@ -18,6 +18,7 @@ shape = SubResource("SphereShape3D_l4rmu")
 
 [node name="Hitbox" type="Area3D" parent="." unique_id=550414875]
 script = ExtResource("1_kvq5h")
+damage = 50
 metadata/_custom_type_script = "uid://dtfk5118tmaxd"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1953045493]
