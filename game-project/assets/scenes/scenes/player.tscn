@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://cpn80hpg21jkk"]
+
+[ext_resource type="Script" uid="uid://cqpue58lau50l" path="res://assets/scripts/player.gd" id="1_14505"]
+[ext_resource type="Script" uid="uid://bi4f4nse41hd6" path="res://assets/scripts/Health.gd" id="1_rwm0n"]
+[ext_resource type="Script" uid="uid://kamw1iyv1d4l" path="res://assets/scripts/Hurtbox.gd" id="3_14505"]
+[ext_resource type="Script" uid="uid://b558jlrvpt1vh" path="res://assets/scripts/states/state_machine.gd" id="4_o5c66"]
+[ext_resource type="Script" uid="uid://c1k6oixh0sjhb" path="res://assets/scripts/states/player/dead_player.gd" id="5_tc801"]
+[ext_resource type="Script" uid="uid://6olhrquouxvp" path="res://assets/scripts/states/player/walk_state_player.gd" id="6_60g6h"]
+[ext_resource type="Script" uid="uid://dl70g12wucp8h" path="res://assets/scripts/states/player/jump_state_player.gd" id="7_hrrj1"]
+[ext_resource type="Script" uid="uid://byxn5gknwhq38" path="res://assets/scripts/states/player/idle_state_player.gd" id="8_c6vv5"]
+[ext_resource type="Script" uid="uid://ifdc1am7f1qr" path="res://assets/scripts/states/player/fly_player.gd" id="9_60g6h"]
+[ext_resource type="Script" uid="uid://d0vs35kgpu6cw" path="res://assets/scripts/states/player/fall_player.gd" id="10_hrrj1"]
+[ext_resource type="PackedScene" uid="uid://ccv64nxdm2n4k" path="res://assets/scenes/ui.tscn" id="11_hrrj1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ysycn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o5c66"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tc801"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rwm0n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4wcc8"]
+radius = 0.7
+height = 2.2
+
+[sub_resource type="Animation" id="Animation_60g6h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera pivot/camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.0063038, 2.822686)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D/MeshInstance3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hrrj1"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D/MeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_c6vv5"]
+resource_name = "fly"
+
+[sub_resource type="Animation" id="Animation_nh07x"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera pivot/camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0009999999, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.0063038, 2.822686), Vector3(0, 1.1751437, 2.822686), Vector3(0, 1.0063038, 2.822686)]
+}
+
+[sub_resource type="Animation" id="Animation_00pic"]
+resource_name = "jump"
+
+[sub_resource type="Animation" id="Animation_0bskb"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dmvh"]
+_data = {
+&"RESET": SubResource("Animation_60g6h"),
+&"dead": SubResource("Animation_hrrj1"),
+&"fly": SubResource("Animation_c6vv5"),
+&"idle": SubResource("Animation_nh07x"),
+&"jump": SubResource("Animation_00pic"),
+&"walk": SubResource("Animation_0bskb")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=280842506]
+script = ExtResource("1_14505")
+speed = 7.5
+jump = 4.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=182176558]
+mesh = SubResource("CapsuleMesh_ysycn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=841541806]
+transform = Transform3D(0.6424316, 0, 0, 0, 0.23337944, 0, 0, 0, 0.25355354, 0, 0.28721213, -0.48543406)
+mesh = SubResource("BoxMesh_o5c66")
+surface_material_override/0 = SubResource("StandardMaterial3D_tc801")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=499660854]
+shape = SubResource("CapsuleShape3D_rwm0n")
+
+[node name="Health" type="Node" parent="." unique_id=1211971927]
+script = ExtResource("1_rwm0n")
+side = "player"
+metadata/_custom_type_script = "uid://bi4f4nse41hd6"
+
+[node name="camera pivot" type="Node3D" parent="." unique_id=553340421]
+
+[node name="camera" type="Camera3D" parent="camera pivot" unique_id=115123206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0063038, 2.822686)
+
+[node name="Node3D" type="Node3D" parent="camera pivot" unique_id=178311008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28772894, -0.87562037)
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1781574713]
+script = ExtResource("3_14505")
+metadata/_custom_type_script = "uid://kamw1iyv1d4l"
+
+[node name="CollisionPolygon3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1565200295]
+shape = SubResource("CapsuleShape3D_4wcc8")
+
+[node name="state_machine" type="Node" parent="." unique_id=217374526 node_paths=PackedStringArray("init_state")]
+script = ExtResource("4_o5c66")
+init_state = NodePath("idle_player")
+metadata/_custom_type_script = "uid://b558jlrvpt1vh"
+
+[node name="dead_player" type="Node" parent="state_machine" unique_id=1598962536]
+script = ExtResource("5_tc801")
+metadata/_custom_type_script = "uid://c1k6oixh0sjhb"
+
+[node name="player_walk" type="Node" parent="state_machine" unique_id=283449493]
+script = ExtResource("6_60g6h")
+metadata/_custom_type_script = "uid://6olhrquouxvp"
+
+[node name="jump_player" type="Node" parent="state_machine" unique_id=2138335845]
+script = ExtResource("7_hrrj1")
+metadata/_custom_type_script = "uid://dl70g12wucp8h"
+
+[node name="idle_player" type="Node" parent="state_machine" unique_id=727442088]
+script = ExtResource("8_c6vv5")
+metadata/_custom_type_script = "uid://byxn5gknwhq38"
+
+[node name="fly_player" type="Node" parent="state_machine" unique_id=325727896]
+script = ExtResource("9_60g6h")
+metadata/_custom_type_script = "uid://ifdc1am7f1qr"
+
+[node name="fall_player" type="Node" parent="state_machine" unique_id=780526047]
+script = ExtResource("10_hrrj1")
+metadata/_custom_type_script = "uid://d0vs35kgpu6cw"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1305656851]
+libraries/ = SubResource("AnimationLibrary_1dmvh")
+
+[node name="UI" parent="." unique_id=764262957 instance=ExtResource("11_hrrj1")]
+
+[connection signal="health_is_null" from="Health" to="state_machine" method="_on_health_health_is_null"]
+[connection signal="hit_taken" from="Hurtbox" to="Health" method="_on_hurtbox_hit_taken"]
