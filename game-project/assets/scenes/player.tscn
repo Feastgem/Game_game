@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://byxn5gknwhq38" path="res://assets/scripts/states/player/idle_state_player.gd" id="8_c6vv5"]
 [ext_resource type="Script" uid="uid://ifdc1am7f1qr" path="res://assets/scripts/states/player/fly_player.gd" id="9_60g6h"]
 [ext_resource type="Script" uid="uid://d0vs35kgpu6cw" path="res://assets/scripts/states/player/fall_player.gd" id="10_hrrj1"]
+[ext_resource type="PackedScene" uid="uid://ccv64nxdm2n4k" path="res://assets/scenes/ui.tscn" id="11_hrrj1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ysycn"]
 
@@ -144,6 +145,7 @@ shape = SubResource("CapsuleShape3D_rwm0n")
 
 [node name="Health" type="Node" parent="." unique_id=1211971927]
 script = ExtResource("1_rwm0n")
+side = "player"
 metadata/_custom_type_script = "uid://bi4f4nse41hd6"
 
 [node name="camera pivot" type="Node3D" parent="." unique_id=553340421]
@@ -192,6 +194,8 @@ metadata/_custom_type_script = "uid://d0vs35kgpu6cw"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1305656851]
 libraries/ = SubResource("AnimationLibrary_1dmvh")
+
+[node name="UI" parent="." unique_id=764262957 instance=ExtResource("11_hrrj1")]
 
 [connection signal="health_is_null" from="Health" to="state_machine" method="_on_health_health_is_null"]
 [connection signal="hit_taken" from="Hurtbox" to="Health" method="_on_hurtbox_hit_taken"]

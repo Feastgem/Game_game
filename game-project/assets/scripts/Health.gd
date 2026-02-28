@@ -4,6 +4,7 @@ extends Node
 signal health_changed
 signal health_is_null
 
+@export var side: String
 @export var max_health: int = 100
 var health: int = max_health : set = set_health , get = get_health
 
@@ -21,7 +22,8 @@ func get_health():
 	return health
 
 
-func _on_hurtbox_hit_taken(value: int) -> void:
-	var _damage: int = health - value
-	set_health(_damage)
+func _on_hurtbox_hit_taken(value: int, variation : String) -> void:
+	if side != variation:
+		var _damage: int = health - value
+		set_health(_damage)
 	

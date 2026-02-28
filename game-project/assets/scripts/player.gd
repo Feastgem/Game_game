@@ -11,7 +11,7 @@ var direction : Vector3
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
+	if not is_on_floor() and ! flight:
 		velocity.y -= 9.8 * delta
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()

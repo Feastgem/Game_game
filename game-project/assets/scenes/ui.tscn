@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://ccv64nxdm2n4k"]
+
+[ext_resource type="FontFile" uid="uid://b5ol23crlys66" path="res://assets/font/MoriaCitadel.TTF" id="1_21nk7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5k2w"]
+bg_color = Color(0.6, 0.6, 0.6, 0.34509805)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21nk7"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g18s6"]
+bg_color = Color(0.93333334, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer" unique_id=764262957]
+
+[node name="Panel" type="Panel" parent="." unique_id=1205792468]
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.097
+anchor_right = 0.032
+anchor_bottom = 0.097
+offset_left = -3.8640022
+offset_top = 0.14399719
+offset_right = 297.136
+offset_bottom = 58.143997
+theme_override_styles/panel = SubResource("StyleBoxFlat_q5k2w")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1252020444]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer" unique_id=1983526145]
+layout_mode = 2
+size_flags_stretch_ratio = 20.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer" unique_id=1177893672]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_21nk7")
+text = "Health:"
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/MarginContainer/HBoxContainer" unique_id=2012024125]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_21nk7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_g18s6")
+value = 100.0

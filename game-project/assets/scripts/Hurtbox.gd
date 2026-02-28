@@ -8,4 +8,5 @@ func _ready() -> void:
 func _on_area_entered(hitbox: Hitbox):
 	if hitbox != null:
 		var _damage: int = hitbox.damage
-		hit_taken.emit(_damage)
+		var side = hitbox.side
+		hit_taken.emit(_damage, side)

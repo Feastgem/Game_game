@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://chitmg68kgs4k"]
+
+[ext_resource type="Texture2D" uid="uid://ddn6aq8bi8et1" path="res://assets/material/grid/grid_gray.png" id="1_njyi2"]
+
+[resource]
+albedo_color = Color(0.3947838, 0.4052422, 0.38432983, 1)
+albedo_texture = ExtResource("1_njyi2")
+bent_normal_enabled = true
+uv1_triplanar = true
