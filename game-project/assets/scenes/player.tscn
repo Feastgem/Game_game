@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cpn80hpg21jkk"]
 
-[ext_resource type="Script" uid="uid://cqpue58lau50l" path="res://assets/scripts/states/player.gd" id="1_14505"]
-[ext_resource type="Script" uid="uid://bi4f4nse41hd6" path="res://assets/scripts/states/Health.gd" id="1_rwm0n"]
-[ext_resource type="Script" uid="uid://kamw1iyv1d4l" path="res://assets/scripts/states/Hurtbox.gd" id="3_14505"]
+[ext_resource type="Script" uid="uid://cqpue58lau50l" path="res://assets/scripts/player.gd" id="1_14505"]
+[ext_resource type="Script" uid="uid://bi4f4nse41hd6" path="res://assets/scripts/Health.gd" id="1_rwm0n"]
+[ext_resource type="Script" uid="uid://kamw1iyv1d4l" path="res://assets/scripts/Hurtbox.gd" id="3_14505"]
 [ext_resource type="Script" uid="uid://b558jlrvpt1vh" path="res://assets/scripts/states/state_machine.gd" id="4_o5c66"]
 [ext_resource type="Script" uid="uid://c1k6oixh0sjhb" path="res://assets/scripts/states/player/dead_player.gd" id="5_tc801"]
 [ext_resource type="Script" uid="uid://6olhrquouxvp" path="res://assets/scripts/states/player/walk_state_player.gd" id="6_60g6h"]
