@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1772878032
+::res://::1772879084
 character_body_3d.gd::GDScript::5591974465185498618::1772767908::0::1::::<>CharacterBody3D<><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1772767908::0::1::::<><><>0<>0<><>::
 qq.tscn::PackedScene::7373988478459268104::1772781460::0::1::::<><><>0<>0<><>::
@@ -53,7 +53,7 @@ LICENSE.md::TextFile::-1::1772780356::0::1::::<><><>0<>0<><>::
 LOGO_LICENSE.md::TextFile::-1::1772780356::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1772780356::0::1::::<><><>0<>0<><>::
 version.txt::TextFile::-1::1772780360::0::1::::<><><>0<>0<><>::
-::res://addons/limboai/bin/::1772878022
+::res://addons/limboai/bin/::1772879073
 limboai.gdextension::GDExtension::419813802831394038::1772780356::0::1::::<><><>0<>0<><>::
 ::res://addons/limboai/bin/liblimboai.macos.editor.framework/::1772854640
 ::res://addons/limboai/bin/liblimboai.macos.template_release.framework/::1772854641
@@ -174,7 +174,7 @@ tag_add.png::CompressedTexture2D::103754499184748404::1772781070::1772781130::1:
 tag_remove.png::CompressedTexture2D::8848896567247252560::1772781070::1772781130::1::::<><><>0<>0<>8373d4f4002dfaa4f9d01e406087abf7<>res://.godot/imported/tag_remove.png-501c3fce9bcd051f70f0fe11c9fc0c4c.ctex::
 water_add.png::CompressedTexture2D::7496097688498698373::1772781070::1772781130::1::::<><><>0<>0<>172845f74813b670c5e898869f945c43<>res://.godot/imported/water_add.png-06e5562e23a1ade14e07b2ff6580116a.ctex::
 water_remove.png::CompressedTexture2D::1618934821690556252::1772781070::1772781130::1::::<><><>0<>0<>7475db7a37dc36683b56ad084b477b49<>res://.godot/imported/water_remove.png-8754ec00f68649179cc5d6e3ad63caa5.ctex::
-::res://addons/terrabrush/bin/::1772878023
+::res://addons/terrabrush/bin/::1772879074
 ::res://addons/terrabrush/bin/libterrabrush.macos.debug.framework/::1772854660
 ::res://addons/terrabrush/bin/libterrabrush.macos.release.framework/::1772854660
 ::res://addons/terrabrush/CSharpWrapper/::1772854661
@@ -201,8 +201,7 @@ water_clipmap_shader_include.gdshaderinc::ShaderInclude::4200733660551430772::17
 water_ripple_buffer_shader.gdshader::Shader::8503993328701535509::1772781072::0::1::::<><><>0<>0<><>::
 water_ripple_shader.gdshader::Shader::2666312371350644954::1772781072::0::1::::<><><>0<>0<><>::
 zones_shader_include.gdshaderinc::ShaderInclude::6817960963774715024::1772781072::0::1::::<><><>0<>0<><>::
-::res://ai/::1772877956
-enemy capsule.tres::BehaviorTree::369240505951719299::1772877956::0::1::::<><><>0<>0<><>::uid://cwu64x24ylgwb::::res://ai/tasks/chack_range.gd<>uid://5mpjd2lbsaly::::res://ai/tasks/shoot.gd<>uid://cp18dvp4mimhd::::res://ai/tasks/check_range_2.gd<>uid://55dd6x5nobbh::::res://ai/tasks/chase.gd
+::res://ai/::1772878315
 ::res://ai/tasks/::1772863945
 chack_range.gd::GDScript::6360218748400024381::1772857554::0::1::::<>BTAction<><>0<>0<><>::
 chase.gd::GDScript::2167785815258121453::1772863945::0::1::::<>BTAction<><>0<>0<><>::
@@ -228,15 +227,15 @@ stone tex.jpg::CompressedTexture2D::5592677489982227715::1772767908::1772780306:
 stone_1.tres::StandardMaterial3D::6658847943040536810::1772792052::0::1::::<><><>0<>0<><>::uid://clxet025q3p0v::::res://assets/material/stone/stone tex.jpg<>uid://dgh460uqssx58::::res://assets/material/stone/ston normal.jpg
 ::res://assets/material/UI/::1772854670
 panel_material.tres::StyleBoxFlat::1609074844092815862::1772767908::0::1::::<><><>0<>0<><>::
-::res://assets/scenes/::1772877919
+::res://assets/scenes/::1772878351
 bullet.tscn::PackedScene::1369613721862732194::1772770622::0::1::::<><><>0<>0<><>::uid://e34jikpubmxt::::res://assets/scripts/bullet.gd<>uid://dtfk5118tmaxd::::res://assets/scripts/Hitbox.gd
 bullet_enemy.tscn::PackedScene::3849246630590740953::1772794678::0::1::::<><><>0<>0<><>::uid://e34jikpubmxt::::res://assets/scripts/bullet.gd<>uid://dtfk5118tmaxd::::res://assets/scripts/Hitbox.gd
-enemy capsule.tscn::PackedScene::4185081795709934249::1772858822::0::1::::<><><>0<>0<><>::uid://bi4f4nse41hd6::::res://assets/scripts/Health.gd<>uid://kamw1iyv1d4l::::res://assets/scripts/Hurtbox.gd<>uid://c14uiugfvdc4a::::res://assets/material/stone/stone_1.tres<>uid://fi4lp11hboat::::res://ai/enemy capsule.tres
+enemy capsule.tscn::PackedScene::4185081795709934249::1772878332::0::1::::<><><>0<>0<><>::uid://bi4f4nse41hd6::::res://assets/scripts/Health.gd<>uid://kamw1iyv1d4l::::res://assets/scripts/Hurtbox.gd<>uid://c14uiugfvdc4a::::res://assets/material/stone/stone_1.tres
 enemy.tscn::PackedScene::3688310296850925792::1772767908::0::1::::<><><>0<>0<><>::uid://dtfk5118tmaxd::::res://assets/scripts/Hitbox.gd
-flame.tscn::PackedScene::2300756893191040508::1772877817::0::1::::<><><>0<>0<><>::uid://cnmr8h1iyn4fd::::res://assets/material/fire/image.png<>uid://qsje1e82lp8::::res://assets/scripts/flame.gd<>uid://dtfk5118tmaxd::::res://assets/scripts/Hitbox.gd
+flame.tscn::PackedScene::2300756893191040508::1772878236::0::1::::<><><>0<>0<><>::uid://cnmr8h1iyn4fd::::res://assets/material/fire/image.png<>uid://qsje1e82lp8::::res://assets/scripts/flame.gd<>uid://dtfk5118tmaxd::::res://assets/scripts/Hitbox.gd
 player.tscn::PackedScene::5854559629513624194::1772877157::0::1::::<><><>0<>0<><>::uid://cqpue58lau50l::::res://assets/scripts/player.gd<>uid://bi4f4nse41hd6::::res://assets/scripts/Health.gd<>uid://kamw1iyv1d4l::::res://assets/scripts/Hurtbox.gd<>uid://0dtp4bg7lol7::::res://assets/scripts/weapon_manager/WeaponManager.gd<>uid://b558jlrvpt1vh::::res://assets/scripts/states/state_machine.gd<>uid://c1k6oixh0sjhb::::res://assets/scripts/states/player/dead_player.gd<>uid://6olhrquouxvp::::res://assets/scripts/states/player/walk_state_player.gd<>uid://dl70g12wucp8h::::res://assets/scripts/states/player/jump_state_player.gd<>uid://byxn5gknwhq38::::res://assets/scripts/states/player/idle_state_player.gd<>uid://ifdc1am7f1qr::::res://assets/scripts/states/player/fly_player.gd<>uid://d0vs35kgpu6cw::::res://assets/scripts/states/player/fall_player.gd<>uid://dh1b88pj1tfoy::::res://assets/scripts/states/substate/none.gd<>uid://ccv64nxdm2n4k::::res://assets/scenes/ui.tscn<>uid://cn6lmsed3lkp5::::res://assets/scripts/states/substate/aiming.gd<>uid://bayhcse5g2ji7::::res://assets/scripts/shooting/timer.gd<>uid://di02btfrn6i4d::::res://assets/scripts/states/substate/sub_state_manager.gd
 ui.tscn::PackedScene::4958505720783997520::1772870087::0::1::::<><><>0<>0<><>::uid://b5ol23crlys66::::res://assets/font/MoriaCitadel.TTF<>uid://dfb3jm31et5k3::::res://assets/scripts/ui.gd<>uid://w6ph0dlkcr4i::::res://assets/material/UI/panel_material.tres<>uid://dvielos1n7e0e::::res://assets/sprites/fireball_weapon.png<>uid://cyal7pd3kih6u::::res://assets/material/crosshair/icons8-crosshair-26.png<>uid://darlk0uo36cgo::::res://assets/sprites/NA.png<>uid://b1n8e4ybxsf1m::::res://assets/sprites/flame_weapon.png
-world.tscn::PackedScene::1761908326182257937::1772877919::0::1::::<><><>0<>0<><>::uid://bssv6xclk5u2k::::res://assets/scenes/enemy.tscn<>uid://cpn80hpg21jkk::::res://assets/scenes/player.tscn<>uid://chitmg68kgs4k::::res://assets/material/grid/grid.tres<>uid://b0vjxkx285rf2::::res://assets/scenes/enemy capsule.tscn
+world.tscn::PackedScene::1761908326182257937::1772878351::0::1::::<><><>0<>0<><>::uid://bssv6xclk5u2k::::res://assets/scenes/enemy.tscn<>uid://cpn80hpg21jkk::::res://assets/scenes/player.tscn<>uid://chitmg68kgs4k::::res://assets/material/grid/grid.tres<>uid://b0vjxkx285rf2::::res://assets/scenes/enemy capsule.tscn
 ::res://assets/scenes/world/::1772854671
 Heightmap_0_0.res::Image::1501842971589803350::1772783034::0::1::::<><><>0<>0<><>::
 Water_0_0.res::Image::2353384197758778061::1772782354::0::1::::<><><>0<>0<><>::
