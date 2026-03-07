@@ -1,0 +1,402 @@
+[gd_scene format=3 uid="uid://cpn80hpg21jkk"]
+
+[ext_resource type="Script" uid="uid://cqpue58lau50l" path="res://assets/scripts/player.gd" id="1_14505"]
+[ext_resource type="Script" uid="uid://bi4f4nse41hd6" path="res://assets/scripts/Health.gd" id="1_rwm0n"]
+[ext_resource type="Script" uid="uid://kamw1iyv1d4l" path="res://assets/scripts/Hurtbox.gd" id="3_14505"]
+[ext_resource type="Script" uid="uid://0dtp4bg7lol7" path="res://assets/scripts/weapon_manager/WeaponManager.gd" id="4_1dmvh"]
+[ext_resource type="Script" uid="uid://b558jlrvpt1vh" path="res://assets/scripts/states/state_machine.gd" id="4_o5c66"]
+[ext_resource type="Script" uid="uid://c1k6oixh0sjhb" path="res://assets/scripts/states/player/dead_player.gd" id="5_tc801"]
+[ext_resource type="Script" uid="uid://6olhrquouxvp" path="res://assets/scripts/states/player/walk_state_player.gd" id="6_60g6h"]
+[ext_resource type="Script" uid="uid://dl70g12wucp8h" path="res://assets/scripts/states/player/jump_state_player.gd" id="7_hrrj1"]
+[ext_resource type="Script" uid="uid://byxn5gknwhq38" path="res://assets/scripts/states/player/idle_state_player.gd" id="8_c6vv5"]
+[ext_resource type="Script" uid="uid://ifdc1am7f1qr" path="res://assets/scripts/states/player/fly_player.gd" id="9_60g6h"]
+[ext_resource type="Script" uid="uid://d0vs35kgpu6cw" path="res://assets/scripts/states/player/fall_player.gd" id="10_hrrj1"]
+[ext_resource type="Script" uid="uid://dh1b88pj1tfoy" path="res://assets/scripts/states/substate/none.gd" id="11_00pic"]
+[ext_resource type="PackedScene" uid="uid://ccv64nxdm2n4k" path="res://assets/scenes/ui.tscn" id="11_hrrj1"]
+[ext_resource type="Script" uid="uid://cn6lmsed3lkp5" path="res://assets/scripts/states/substate/aiming.gd" id="12_0bskb"]
+[ext_resource type="Script" uid="uid://bayhcse5g2ji7" path="res://assets/scripts/shooting/timer.gd" id="12_c6vv5"]
+[ext_resource type="Script" uid="uid://di02btfrn6i4d" path="res://assets/scripts/states/substate/sub_state_manager.gd" id="13_0bskb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ysycn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o5c66"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tc801"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rwm0n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4wcc8"]
+radius = 0.52
+height = 2.04
+
+[sub_resource type="Animation" id="Animation_60g6h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera pivot/camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.0063038, 2.822686)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D/MeshInstance3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:collision_layer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:collision_mask")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("camera pivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("camera pivot/camera:fov")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("camera pivot/Node3D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.128, 0.481, -0.857)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("camera pivot:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1dmvh"]
+resource_name = "aiming"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.64203095, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camera pivot/camera:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75.0, 50.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("camera pivot/camera:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.006, 2.823), Vector3(0, 0.48094678, 1.5049473)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("camera pivot/Node3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.034, 0.2, -0.857)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("camera pivot:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2617994, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hrrj1"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D/MeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [9, 8]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:collision_mask")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [9, 8]
+}
+
+[sub_resource type="Animation" id="Animation_c6vv5"]
+resource_name = "fly"
+
+[sub_resource type="Animation" id="Animation_nh07x"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera pivot/camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0009999999, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.0063038, 2.822686), Vector3(0, 1.1751437, 2.822686), Vector3(0, 1.0063038, 2.822686)]
+}
+
+[sub_resource type="Animation" id="Animation_00pic"]
+resource_name = "jump"
+
+[sub_resource type="Animation" id="Animation_0bskb"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dmvh"]
+_data = {
+&"RESET": SubResource("Animation_60g6h"),
+&"aiming": SubResource("Animation_1dmvh"),
+&"dead": SubResource("Animation_hrrj1"),
+&"fly": SubResource("Animation_c6vv5"),
+&"idle": SubResource("Animation_nh07x"),
+&"jump": SubResource("Animation_00pic"),
+&"walk": SubResource("Animation_0bskb")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=280842506 node_paths=PackedStringArray("UI")]
+script = ExtResource("1_14505")
+speed = 7.5
+jump = 4.5
+UI = NodePath("UI")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=182176558]
+mesh = SubResource("CapsuleMesh_ysycn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=841541806]
+transform = Transform3D(0.6424316, 0, 0, 0, 0.23337944, 0, 0, 0, 0.25355354, 0, 0.28721213, -0.48543406)
+mesh = SubResource("BoxMesh_o5c66")
+surface_material_override/0 = SubResource("StandardMaterial3D_tc801")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=499660854]
+shape = SubResource("CapsuleShape3D_rwm0n")
+
+[node name="Health" type="Node" parent="." unique_id=1211971927]
+script = ExtResource("1_rwm0n")
+side = "player"
+metadata/_custom_type_script = "uid://bi4f4nse41hd6"
+
+[node name="camera pivot" type="Node3D" parent="." unique_id=553340421]
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 0, 0, 0)
+
+[node name="camera" type="Camera3D" parent="camera pivot" unique_id=115123206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0063038, 2.822686)
+
+[node name="Node3D" type="Node3D" parent="camera pivot" unique_id=178311008]
+transform = Transform3D(0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0, 0.9999999, 0.128, 0.481, -0.857)
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1781574713]
+script = ExtResource("3_14505")
+metadata/_custom_type_script = "uid://kamw1iyv1d4l"
+
+[node name="CollisionPolygon3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1565200295]
+shape = SubResource("CapsuleShape3D_4wcc8")
+
+[node name="WeaponManager" type="Node" parent="." unique_id=682657869]
+script = ExtResource("4_1dmvh")
+metadata/_custom_type_script = "uid://0dtp4bg7lol7"
+
+[node name="SubStateManager" type="Node" parent="." unique_id=290244437 node_paths=PackedStringArray("init_state")]
+script = ExtResource("13_0bskb")
+init_state = NodePath("none")
+metadata/_custom_type_script = "uid://di02btfrn6i4d"
+
+[node name="none" type="Node" parent="SubStateManager" unique_id=1455695884]
+script = ExtResource("11_00pic")
+metadata/_custom_type_script = "uid://dh1b88pj1tfoy"
+
+[node name="aiming" type="Node" parent="SubStateManager" unique_id=787695958]
+script = ExtResource("12_0bskb")
+metadata/_custom_type_script = "uid://cn6lmsed3lkp5"
+
+[node name="state_machine" type="Node" parent="." unique_id=217374526 node_paths=PackedStringArray("init_state")]
+script = ExtResource("4_o5c66")
+init_state = NodePath("idle_player")
+metadata/_custom_type_script = "uid://b558jlrvpt1vh"
+
+[node name="dead_player" type="Node" parent="state_machine" unique_id=1598962536]
+script = ExtResource("5_tc801")
+metadata/_custom_type_script = "uid://c1k6oixh0sjhb"
+
+[node name="player_walk" type="Node" parent="state_machine" unique_id=283449493]
+script = ExtResource("6_60g6h")
+metadata/_custom_type_script = "uid://6olhrquouxvp"
+
+[node name="jump_player" type="Node" parent="state_machine" unique_id=2138335845]
+script = ExtResource("7_hrrj1")
+metadata/_custom_type_script = "uid://dl70g12wucp8h"
+
+[node name="idle_player" type="Node" parent="state_machine" unique_id=727442088]
+script = ExtResource("8_c6vv5")
+metadata/_custom_type_script = "uid://byxn5gknwhq38"
+
+[node name="fly_player" type="Node" parent="state_machine" unique_id=325727896]
+script = ExtResource("9_60g6h")
+metadata/_custom_type_script = "uid://ifdc1am7f1qr"
+
+[node name="fall_player" type="Node" parent="state_machine" unique_id=780526047]
+script = ExtResource("10_hrrj1")
+metadata/_custom_type_script = "uid://d0vs35kgpu6cw"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1305656851]
+libraries/ = SubResource("AnimationLibrary_1dmvh")
+
+[node name="UI" parent="." unique_id=764262957 instance=ExtResource("11_hrrj1")]
+
+[node name="weapon_shoot_delay" type="Timer" parent="." unique_id=1437226478]
+script = ExtResource("12_c6vv5")
+metadata/_custom_type_script = "uid://bayhcse5g2ji7"
+
+[node name="flame_delay" type="Timer" parent="." unique_id=1824003406]
+script = ExtResource("12_c6vv5")
+fire_delay = 10
+metadata/_custom_type_script = "uid://bayhcse5g2ji7"
+
+[connection signal="health_changed" from="Health" to="UI" method="_on_health_health_changed"]
+[connection signal="health_is_null" from="Health" to="state_machine" method="_on_health_health_is_null"]
+[connection signal="max_health_is" from="Health" to="UI" method="_on_health_max_health_is"]
+[connection signal="hit_taken" from="Hurtbox" to="Health" method="_on_hurtbox_hit_taken"]
+[connection signal="weapon_changed" from="WeaponManager" to="UI" method="_on_weapon_manager_weapon_changed"]
+[connection signal="Aiming" from="SubStateManager/aiming" to="UI" method="_on_aiming_aiming"]
+[connection signal="NotAiming" from="SubStateManager/aiming" to="UI" method="_on_aiming_not_aiming"]
+[connection signal="timeout" from="weapon_shoot_delay" to="." method="_on_weapon_shoot_delay_timeout"]
+[connection signal="timeout" from="flame_delay" to="." method="_on_flame_delay_timeout"]

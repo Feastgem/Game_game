@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ddcaro5rnoe53"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jmtks"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=2112661474]
+
+[node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=1904233112]
+
+[node name="torso" type="Node3D" parent="Skeleton3D" unique_id=24507804]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Skeleton3D/torso" unique_id=2035259560]
+mesh = SubResource("CapsuleMesh_jmtks")
+
+[node name="PhysicalBone3D" type="PhysicalBone3D" parent="Skeleton3D/torso" unique_id=263593107]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+bone_name = "torso"

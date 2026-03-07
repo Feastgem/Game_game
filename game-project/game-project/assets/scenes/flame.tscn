@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://71reofbosvrw"]
+
+[ext_resource type="Texture2D" uid="uid://cnmr8h1iyn4fd" path="res://assets/material/fire/image.png" id="1_4j0c4"]
+[ext_resource type="Script" uid="uid://qsje1e82lp8" path="res://assets/scripts/flame.gd" id="1_6qgeb"]
+[ext_resource type="Script" uid="uid://dtfk5118tmaxd" path="res://assets/scripts/Hitbox.gd" id="2_b2wx0"]
+
+[sub_resource type="Curve" id="Curve_6qgeb"]
+_data = [Vector2(0.03589744, 1), 0.0, 0.0, 0, 0, Vector2(0.6923077, 1), 0.0, 0.0, 0, 0, Vector2(0.83589745, 1), 0.0, 0.0, 0, 0, Vector2(0.97948724, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_sslyy"]
+curve = SubResource("Curve_6qgeb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b2wx0"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 25.0
+emission_ring_radius = 0.0
+emission_ring_inner_radius = 0.5
+emission_ring_cone_angle = 90.0
+spread = 86.666
+gravity = Vector3(0, 0, 0)
+color = Color(1, 0.3, 0.3, 1)
+alpha_curve = SubResource("CurveTexture_sslyy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qgeb"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_4j0c4")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_sslyy"]
+material = SubResource("StandardMaterial3D_6qgeb")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bojcs"]
+radius = 0.8745117
+height = 24.75
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6qgeb"]
+
+[node name="flame" type="Node3D" unique_id=1987945915]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_6qgeb")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=977998883]
+transform = Transform3D(0.985671, 0.0392204, -0.16405267, -0.05119543, 0.99627364, -0.06941443, 0.16071875, 0.07681857, 0.98400563, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D" unique_id=1786502507]
+transform = Transform3D(0.9996538, 0, -0.026299058, 0, 1, 0, 0.026299058, 0, 0.9996538, 0.2584731, 0, -11.305106)
+amount = 2000
+lifetime = 1.01
+explosiveness = 0.09
+collision_base_size = 13.43
+process_material = SubResource("ParticleProcessMaterial_b2wx0")
+draw_pass_1 = SubResource("QuadMesh_sslyy")
+
+[node name="Hitbox" type="Area3D" parent="Node3D" unique_id=1936401672]
+transform = Transform3D(0.9996538, 0, -0.026299058, 0, 1, 0, 0.026299058, 0, 0.9996538, -0.038927045, 0, -0.0005117654)
+script = ExtResource("2_b2wx0")
+damage = 50
+side = "player"
+metadata/_custom_type_script = "uid://dtfk5118tmaxd"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Hitbox" unique_id=1663254389]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4.97217e-07, -11.375)
+shape = SubResource("CapsuleShape3D_bojcs")
+disabled = true
+
+[node name="Timer" type="Timer" parent="Node3D" unique_id=696966001]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="Timer2" type="Timer" parent="Node3D" unique_id=405373033]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=1070998480]
+transform = Transform3D(0.9996541, 0, -0.026299061, 0, 1, 0, 0.02629906, 0, 0.9996541, -0.18062188, 0, 5.385453)
+
+[node name="Timer3" type="Timer" parent="Node3D" unique_id=306746016]
+wait_time = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=714176975]
+transform = Transform3D(0.9996538, 0.026299058, 1.1495657e-09, 2.526226e-15, -4.3711385e-08, 1, 0.026299058, -0.9996538, -4.3696247e-08, -0.038927045, 0, -0.0005117654)
+mesh = SubResource("CapsuleMesh_6qgeb")
+
+[connection signal="timeout" from="Node3D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Node3D/Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Node3D/Timer3" to="." method="_on_timer_3_timeout"]

@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://0dqmw4fnonyn"]
+
+[ext_resource type="PackedScene" uid="uid://bssv6xclk5u2k" path="res://assets/scenes/enemy.tscn" id="1_gc7y0"]
+[ext_resource type="PackedScene" uid="uid://cpn80hpg21jkk" path="res://assets/scenes/player.tscn" id="2_0moxn"]
+[ext_resource type="Material" uid="uid://chitmg68kgs4k" path="res://assets/material/grid/grid.tres" id="3_vu0c7"]
+[ext_resource type="PackedScene" uid="uid://b0vjxkx285rf2" path="res://assets/scenes/enemy capsule.tscn" id="6_6trao"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bd1kc"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_6trao"]
+sky_material = SubResource("ProceduralSkyMaterial_bd1kc")
+
+[sub_resource type="Environment" id="Environment_mwrnc"]
+background_mode = 2
+sky = SubResource("Sky_6trao")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="world" type="StaticBody3D" unique_id=2144309348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4130199, 0)
+collision_layer = 9
+collision_mask = 9
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=823462228]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=420905767]
+environment = SubResource("Environment_mwrnc")
+
+[node name="enemy" parent="." unique_id=1005151256 instance=ExtResource("1_gc7y0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9427556, 8.885035, 5.870473)
+
+[node name="CharacterBody3D" parent="." unique_id=280842506 instance=ExtResource("2_0moxn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5036182, 0.648968, 3.797739)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=286944641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.4508915, 0)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=965065788]
+size = Vector3(416, 0.001, 147)
+material = ExtResource("3_vu0c7")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=102368234]
+radius = 50.0
+sides = 25
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D" unique_id=780969751]
+operation = 2
+radius = 49.0
+sides = 25
+
+[node name="EnemyCapsule" parent="." unique_id=1746593042 instance=ExtResource("6_6trao")]
+
+[node name="EnemyCapsule2" parent="." unique_id=1134353 instance=ExtResource("6_6trao")]

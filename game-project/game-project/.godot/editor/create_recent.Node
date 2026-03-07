@@ -1,0 +1,14 @@
+Node3D
+MeshInstance3D
+CollisionShape3D
+Timer
+Camera3D
+weapon_shoot_delay
+Node
+Hitbox
+GPUParticles3D
+CharacterBody3D
+TextureRect
+WeaponManager
+Label
+Panel
