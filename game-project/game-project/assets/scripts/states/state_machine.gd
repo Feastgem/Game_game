@@ -4,6 +4,7 @@ extends Node
 @export var init_state:state 
 var current_state: state : set = set_state
 var states: Dictionary ={}
+var agent = get_parent()
 
 func _ready() -> void:
 	for child in get_children():
@@ -39,5 +40,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_health_health_is_null() -> void:
-	if current_state != states.get('dead_player'.to_lower()):
+	if current_state != states.get('dead_player'.to_lower()) and agent is Player:
 		change_state('dead_player')
+	if current_state != states.get('EnemyDead'.to_lower()) and agent is EnemyCapsule:
+		change_state('EnemyDead')

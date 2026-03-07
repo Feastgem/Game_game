@@ -1,0 +1,14 @@
+res://assets/scenes/world.tscn
+res://assets/scripts/states/enemy capsule/enemy_chase.gd
+res://assets/scripts/states/enemy capsule/enemy_dead.gd
+res://assets/scripts/states/enemy capsule/enemy_idle.gd
+res://assets/scripts/states/enemy capsule/enemy_shoot.gd
+res://assets/scenes/enemy capsule.tscn
+res://assets/scripts/states/enemy capsule/enemy_wander.gd
+res://assets/scripts/states/state_machine.gd
+res://assets/scenes/player.tscn
+res://assets/scripts/EnemyCapsule.gd
+res://assets/scenes/enemycapsule.tscn
+res://assets/scripts/player.gd
+res://assets/scenes/ui.tscn
+res://assets/scenes/flame.tscn

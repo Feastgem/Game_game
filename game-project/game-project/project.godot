@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game Project"
-run/main_scene="uid://0dqmw4fnonyn"
+run/main_scene="res://assets/scenes/world.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://b4d2tte22cm30"]
+
+[ext_resource type="Script" uid="uid://d3axsbmfomvp6" path="res://assets/scripts/EnemyCapsule.gd" id="1_2o7dp"]
+[ext_resource type="Material" uid="uid://c14uiugfvdc4a" path="res://assets/material/stone/stone_1.tres" id="2_as4qp"]
+[ext_resource type="Script" uid="uid://bi4f4nse41hd6" path="res://assets/scripts/Health.gd" id="2_dylhe"]
+[ext_resource type="Script" uid="uid://kamw1iyv1d4l" path="res://assets/scripts/Hurtbox.gd" id="3_dg3bh"]
+[ext_resource type="Script" uid="uid://cwdo5pebc0otd" path="res://assets/scripts/states/enemy capsule/enemy_chase.gd" id="3_o3hvi"]
+[ext_resource type="Script" uid="uid://dor713paaqbtb" path="res://assets/scripts/states/enemy capsule/enemy_dead.gd" id="4_as4qp"]
+[ext_resource type="Script" uid="uid://d30me6eltvu88" path="res://assets/scripts/states/enemy capsule/enemy_idle.gd" id="5_42ln3"]
+[ext_resource type="Script" uid="uid://cjsrauqs6py60" path="res://assets/scripts/states/enemy capsule/enemy_shoot.gd" id="6_7t801"]
+[ext_resource type="Script" uid="uid://pq4t2mhphigi" path="res://assets/scripts/states/enemy capsule/enemy_wander.gd" id="7_pe02s"]
+[ext_resource type="Script" uid="uid://b558jlrvpt1vh" path="res://assets/scripts/states/state_machine.gd" id="8_vt7hf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g5u2r"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_axpnc"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2o7dp"]
+material = ExtResource("2_as4qp")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dylhe"]
+radius = 0.55
+height = 2.1
+
+[node name="EnemyCapsule" type="CharacterBody3D" unique_id=1727802888]
+script = ExtResource("1_2o7dp")
+metadata/_custom_type_script = "uid://d3axsbmfomvp6"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=253049121]
+shape = SubResource("CapsuleShape3D_g5u2r")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="shoot" type="MeshInstance3D" parent="." unique_id=568417412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42375225, 1)
+mesh = SubResource("SphereMesh_axpnc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1567712957]
+mesh = SubResource("CapsuleMesh_2o7dp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2121892471]
+
+[node name="state_machine" type="Node" parent="." unique_id=888995614]
+script = ExtResource("8_vt7hf")
+metadata/_custom_type_script = "uid://b558jlrvpt1vh"
+
+[node name="EnemyChase" type="Node" parent="state_machine" unique_id=610060353]
+script = ExtResource("3_o3hvi")
+metadata/_custom_type_script = "uid://cwdo5pebc0otd"
+
+[node name="EnemyDead" type="Node" parent="state_machine" unique_id=876512490]
+script = ExtResource("4_as4qp")
+metadata/_custom_type_script = "uid://dor713paaqbtb"
+
+[node name="EnemyIdle" type="Node" parent="state_machine" unique_id=1218499873]
+script = ExtResource("5_42ln3")
+metadata/_custom_type_script = "uid://d30me6eltvu88"
+
+[node name="EnemyShoot" type="Node" parent="state_machine" unique_id=961707167]
+script = ExtResource("6_7t801")
+metadata/_custom_type_script = "uid://cjsrauqs6py60"
+
+[node name="EnemyWander" type="Node" parent="state_machine" unique_id=435241965]
+script = ExtResource("7_pe02s")
+metadata/_custom_type_script = "uid://pq4t2mhphigi"
+
+[node name="Health" type="Node" parent="." unique_id=1174914793]
+script = ExtResource("2_dylhe")
+metadata/_custom_type_script = "uid://bi4f4nse41hd6"
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1807212549]
+script = ExtResource("3_dg3bh")
+metadata/_custom_type_script = "uid://kamw1iyv1d4l"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1250160687]
+shape = SubResource("CapsuleShape3D_dylhe")
+debug_color = Color(0.82, 0, 0.16400023, 1)
+
+[connection signal="health_is_null" from="Health" to="." method="_on_health_health_is_null"]

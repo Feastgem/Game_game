@@ -22,7 +22,6 @@ var alive : bool = true
 var weapon_key : int = 1
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	weapon_manager.change_weapon(3)
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and ! flight:
 		velocity.y -= 12 * delta
@@ -34,6 +33,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	# fireball
 	if Input.is_action_just_pressed("click") and shootable_fireball and Aiming and UI.energy_bar.value >= 20 and weapon_key == 2:
+		print("nig")
 		var instance=proj.instantiate()
 		instance.position=bullet_spawn.global_position
 		instance.transform.basis=bullet_spawn.global_transform.basis
@@ -48,8 +48,8 @@ func _physics_process(delta: float) -> void:
 		print("flame")
 		var instance=flame.instantiate()
 		instance.position=bullet_spawn.position
-		instance.transform.basis=bullet_spawn.global_transform.basis
-		add_child(instance)
+		instance.transform.basis=bullet_spawn.transform.basis
+		bullet_spawn.add_child(instance)
 		flame_delay.start()
 		UI.subenergy(50)
 	
